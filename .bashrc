@@ -80,8 +80,12 @@ bjne() {
   "$@" > /dev/null 2>&1 &
 }
 
-source /usr/share/git/completion/git-completion.bash 
-source /usr/share/git/completion/git-prompt.sh
+if [ -f /usr/share/git/completion/git-completion.bash ]; then
+	source /usr/share/git/completion/git-completion.bash 
+	source /usr/share/git/completion/git-prompt.sh
+else
+	source /etc/bash_completion.d/git-prompt
+fi
 
 if [[ $- == *i* ]]
 then
